@@ -93,23 +93,31 @@ async def check_inactivity():
 @bot.tree.command(name="resolu", description="Clôture le post et le marque comme résolu (Modos uniquement)")
 @app_commands.checks.has_permissions(manage_threads=True)
 async def resolu(interaction: discord.Interaction):
-    if isinstance(interaction.channel, discord.Thread) and interaction.channel.parent_id == FORUM_CHANNEL_ID:
-        thread = interaction.channel
+    # On récupère le salon actuel où la commande est tapée
+    channel = interaction.channel
+    
+    # On vérifie de manière super robuste si on est bien à l'intérieur d'un post du forum
+    if channel and hasattr(channel, 'parent') and channel.parent and channel.parent.id == FORUM_CHANNEL_ID:
+        thread = channel
         creator_id = thread.owner_id
         
+        # 1. Envoi du message de confirmation avec mention du créateur
         await interaction.response.send_message(
             f"Super, dossier classé ! 🎉\n"
             f"Merci pour ton retour <@{creator_id}>. Je passe le post en Résolus. ✅\n"
             f"Si tu as une autre question plus tard, n'hésite pas à ouvrir un nouveau post dans <#{FORUM_CHANNEL_ID}> ! 🚀🤝"
         )
         
+        # 2. Récupération et application du tag "Résolu"
         resolved_tag = thread.parent.get_tag(RESOLVED_TAG_ID)
         tags = [t for t in thread.applied_tags]
         if resolved_tag and resolved_tag not in tags:
             tags.append(resolved_tag)
             
-        await thread.edit(applied_tags=tags, archived=True, locked=False)
+        # 3. On archive le post
+        await thread.edit(applied_tags=tags, archived=True, locked=False, reason="Commande /resolu par un modo")
     else:
+        # Si on est dans un salon classique ou le mauvais forum
         await interaction.response.send_message("❌ Cette commande ne peut être utilisée que dans un post de ton forum.", ephemeral=True)
 
 @resolu.error
