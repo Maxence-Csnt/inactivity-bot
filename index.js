@@ -23,10 +23,10 @@ const config = {
 
   // Délais
   oneMonthMs:  10 * 1000,   // 10 secondes
-twoMonthsMs: 20 * 1000,   // 20 secondes
+  twoMonthsMs: 20 * 1000,   // 20 secondes
 
   // Intervalle de vérification (toutes les heures)
-  checkIntervalMs: 60 * 60 * 1000,
+  checkIntervalMs: 1 * 1000,  // toutes les 1 secondes
 };
 // ─────────────────────────────────────────────────────────────────────────────
 
