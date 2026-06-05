@@ -22,8 +22,8 @@ const config = {
   inactiveTagName: 'Inactif',
 
   // Délais
-  oneMonthMs:  30 * 24 * 60 * 60 * 1000,
-  twoMonthsMs: 60 * 24 * 60 * 60 * 1000,
+  oneMonthMs:  10 * 1000,   // 10 secondes
+twoMonthsMs: 20 * 1000,   // 20 secondes
 
   // Intervalle de vérification (toutes les heures)
   checkIntervalMs: 60 * 60 * 1000,
