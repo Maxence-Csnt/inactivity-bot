@@ -13,7 +13,7 @@ const config = {
   token: process.env.DISCORD_TOKEN,
 
   // Salon forum de support (remplace par ton ID)
-  forumChannelId: 'TON_ID_FORUM',
+  forumChannelId: '1496121282687664268',
 
   // Salon où ouvrir de nouveaux posts (utilisé dans le message 2 mois)
   newPostChannelId: '1469712424578973716',
