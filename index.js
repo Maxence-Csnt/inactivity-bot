@@ -26,7 +26,7 @@ const config = {
   twoMonthsMs: 20 * 1000,   // 20 secondes
 
   // Intervalle de vérification (toutes les heures)
-  checkIntervalMs: 1 * 1000,  // toutes les 1 secondes
+  checkIntervalMs: 5 * 1000,  // toutes les 5 secondes
 };
 // ─────────────────────────────────────────────────────────────────────────────
 
