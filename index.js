@@ -124,7 +124,7 @@ async function checkInactiveThreads() {
     const messages = await thread.messages.fetch({ limit: 1 }).catch(() => null);
     if (!messages || messages.size === 0) continue;
 
-    const elapsed = now - messages.first().createdTimestamp;
+    const elapsed = now - (messages.size > 0 ? messages.first().createdTimestamp : thread.createdTimestamp);
 
     // ── 2 MOIS ──
     if (elapsed >= config.twoMonthsMs && !state.warned2months) {
