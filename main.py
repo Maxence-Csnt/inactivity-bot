@@ -8,7 +8,7 @@ from datetime import datetime, timezone, timedelta
 FORUM_CHANNEL_ID = 1469712424578973716  # ID de ton salon forum/blog
 AUTO_TAG_ID      = 1496121282687664269  # ID du tag automatique à la création
 INACTIVE_TAG_ID  = 1512469541941149867  # ID du tag "Inactif"
-RESOLVED_TAG_ID  = 0                   # ⚠️ REMPLACE PAR LE VRAI ID du tag "Résolu"
+RESOLVED_TAG_ID  = 1496121282687664270  # ⚠️ REMPLACE PAR LE VRAI ID du tag "Résolu"
 
 intents = discord.Intents.default()
 intents.message_content = True
